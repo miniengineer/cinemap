@@ -44,6 +44,8 @@ class App extends React.Component {
         imdbRating: "7.7",
         summary: "In his fourth year at Hogwarts, Harry is unwittingly selected to compete in the inter-school Triwizard Tournament. Meanwhile, the wizarding world remains unaware of the ominous rise of dark forces."
       }],
+      locations,
+      
     };
   }
 
