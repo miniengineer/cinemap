@@ -14,6 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      selectedMovie: "",
       cinemas: [
         {
           movie: "Joker",
@@ -45,8 +46,14 @@ class App extends React.Component {
         summary: "In his fourth year at Hogwarts, Harry is unwittingly selected to compete in the inter-school Triwizard Tournament. Meanwhile, the wizarding world remains unaware of the ominous rise of dark forces."
       }],
       locations,
-      
     };
+  }
+
+  handleMovieInput = (e) => {
+    if (e.key === "Enter") {
+      console.log("Your movie is ",e.target.value);
+      this.setState({ selectedMovie: e.target.value });
+    }
   }
 
   render() {
@@ -62,6 +69,7 @@ class App extends React.Component {
           variant="outlined"
           label="Let's go to the cinema! 📽"
           placeholder="What movie do you want to watch? 🎥"
+          onKeyDown={this.handleMovieInput}
         />
         <Map locations={this.state.locations}></Map>
       </Container>
