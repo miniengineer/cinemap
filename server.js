@@ -20,27 +20,39 @@ const setupExpressServer = () => {
     const showtimesObject = await axios.get(
       `https://api.internationalshowtimes.com/v4/showtimes?countries=JP&movie_id=${movieId}&apikey=${apikey}`
     );
-    const cinemaDataMap = {};
+    const allCinemasInJapan = await axios.get(
+      `https://api.internationalshowtimes.com/v4/cinemas/?countries=JP&apikey=${apikey}`
+    );
+    const cinemaIdToNameMap = {};
+    allCinemasInJapan.cinemas.forEach(cinema => {
+      cinemaIdToNameMap[cinema.id] = {
+        cinemaName: cinema.name,
+        cinemaId: cinema.id,
+        address: cinema.address, //this is an object
+        latitude: cinema.location.lat,
+        longitude: cinema.longitude.lon
+      };
+    });
+    const cinemaResponseObject = {};
     showtimesObject.showtimes.forEach(showtime => {
-      if (!cinemaDataMap[showtime.cinema_id]) {
-        const cinemaObject = await axios.get(
-          `https://api.internationalshowtimes.com/v4/cinemas/${showtime.cinema_id}`
-        );
-        cinemaDataMap[showtime.cinema_id] = {
-            cinemaName: cinemaObject.name,
-            cinemaId: showtime.cinema_id,
-            movieName: title,
-            movieId,
-            address: cinemaObject.address, //this is an object
-            latitude: cinemaObject.location.lat,
-            longitude: cinemaObject.location.lon,
-            showtimes: [showtime.start_at]            
+      if (!cinemaResponseObject[showtime.cinema_id]) {
+        cinemaResponseObject[showtime.cinema_id] = {
+          cinemaName: cinemaIdToNameMap[showtime.cinema_id].name,
+          cinemaId: showtime.cinema_id,
+          movieName: title,
+          movieId,
+          address: cinemaIdToNameMap[showtime.cinema_id].address, //this is an object
+          latitude: cinemaIdToNameMap[showtime.cinema_id].location.lat,
+          longitude: cinemaIdToNameMap[showtime.cinema_id].location.lon,
+          showtimes: [showtime.start_at]
         };
       } else {
-        cinemaDataMap[showtime.cinema_id].showtimes.push(showtime.start_at);
+        cinemaResponseObject[showtime.cinema_id].showtimes.push(
+          showtime.start_at
+        );
       }
     });
-    res.send(cinemaDataMap)
+    res.send(cinemaResponseObject);
   });
 };
 
