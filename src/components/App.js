@@ -53,6 +53,7 @@ class App extends React.Component {
     if (e.key === "Enter") {
       console.log("Your movie is ",e.target.value);
       this.setState({ selectedMovie: e.target.value });
+      e.target.value = "";
     }
   }
 
