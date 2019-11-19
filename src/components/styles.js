@@ -2,7 +2,9 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    marginTop: theme.spacing(25),
+    marginBottom: theme.spacing(0),
+    width: "90%"
   }
 });
 

@@ -107,7 +107,7 @@ class Map extends Component {
           }
           mapElement={
             <div
-              style={{ height: `70vh`, width: `100%`, borderRadius: "5px" }}
+              style={{ height: `50vh`, width: `100%`, borderRadius: "5px" }}
             />
           }
           scrollwheel={false}

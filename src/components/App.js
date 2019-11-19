@@ -5,7 +5,7 @@ import "./App.css";
 import Map from "./Map/Map";
 
 //material-ui
-import { Container, TextField } from "@material-ui/core";
+import { Container, TextField, AppBar } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import locations from "../data/locations";
@@ -38,17 +38,17 @@ class App extends React.Component {
     const { classes } = this.props;
 
     return (
-      <Container maxWidth="md">
-        <h1>Cinemap 🎥 🗺</h1>
+      <Container className="App" maxWidth="md">
+        <AppBar>
+          <h1>Cinemap</h1>
+        </AppBar>
         <TextField
           id="outlined-basic"
           className={classes.textField}
-          label="Movie Title"
           margin="normal"
           variant="outlined"
           label="Let's go to the cinema! 📽"
           placeholder="What movie do you want to watch? 🎥"
-          style={{ width: "100%" }}
         />
         <Map locations={this.state.locations}></Map>
       </Container>
