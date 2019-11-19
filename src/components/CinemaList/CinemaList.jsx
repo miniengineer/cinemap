@@ -15,7 +15,17 @@ function CinemaList(props) {
             <Typography gutterBottom variant="h5" component="h2" >{cinema.movie}</Typography>
             <Typography variant="body2" color="textPrimary" component="p">{props.movieInfo.summary}</Typography>
             <br />
-            <Typography variant="h5" component="h4" >{props.movieInfo.imdbRating} IMDB</Typography>
+            <Typography className={classes.alignLeft} gutterBottom variant="h5" component="h2">Cinema: {cinema.name}</Typography>
+            <br />
+            {cinema.showtimes.map(showtime => <Typography className={classes.alignLeft} variant="body1" color="textPrimary" component="p">{new Date(showtime).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+               })}</Typography>)}
+            <br />
+            <Typography className={classes.alignLeft} variant="h8" component="h2" >{props.movieInfo.imdbRating} IMDB</Typography>
           </CardContent>
         </CardActionArea>
       </Card>
