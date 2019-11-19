@@ -2,3 +2,7 @@
 .gm-style .gm-style-iw-t::after {
   top: -50px;
 }
+
+.mapContainer {
+  margin: 10% 0 10% 0;
+}
