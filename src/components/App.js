@@ -2,9 +2,11 @@ import React from 'react';
 import './App.css';
 
 //material-ui
-import { Container } from "@material-ui/core";
+import { Container, TextField } from "@material-ui/core";
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -25,11 +27,15 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
       <Container maxWidth = "md">
         <p>Cookies</p>
+        <TextField id="outlined-basic" className={classes.textField} label="Movie Title" margin="normal" variant="outlined" />
       </Container>
     );
   }
 }
 
+export default withStyles(styles)(App);
