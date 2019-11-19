@@ -6,7 +6,7 @@ import Map from "./Map/Map";
 import CinemaList from "./CinemaList/CinemaList";
 
 //material-ui
-import { Container, TextField, AppBar } from "@material-ui/core";
+import { Container, TextField, AppBar, Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import locations from "../data/locations";
@@ -35,44 +35,61 @@ class App extends React.Component {
         }
       ],
       movieInfo: {
+        movie: "Joker",
         imageUrl:
           "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
         imdbRating: "8.8",
-        summary: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker."
+        summary:
+          "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker."
       },
       locations,
       isCinemaListShown: true
     };
   }
 
-  handleMovieInput = (e) => {
+  handleMovieInput = e => {
     if (e.key === "Enter") {
       this.setState({ selectedMovie: e.target.value, isCinemaListShown: true });
       e.target.value = "";
     }
-  }
+  };
 
   render() {
     const { classes } = this.props;
 
     return (
       <Container className="App" maxWidth="md">
-        <AppBar>
-          <h1>Cinemap</h1>
+        <AppBar className={classes.appBar}>
+          <Grid container spacing={3} justify="center" alignItems="center">
+            <Grid item xs="3">
+              <h3>HOME</h3>
+            </Grid>
+
+            <Grid item xs="6">
+              {" "}
+              <h1>Cinemap</h1>
+            </Grid>
+            <Grid item xs="3">
+              <h3>ABOUT</h3>
+            </Grid>
+          </Grid>
         </AppBar>
         <TextField
           id="outlined-basic"
           className={classes.textField}
           margin="normal"
           variant="outlined"
-          label="Let's go to the cinema! 📽"
-          placeholder="What movie do you want to watch? 🎥"
+          label="What movie do you want to watch? 🎥"
+          placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
           onKeyDown={this.handleMovieInput}
         />
         <Map locations={this.state.locations}></Map>
-        {
-          this.state.isCinemaListShown ? <CinemaList  cinemas={this.state.cinemas} movieInfo={this.state.movieInfo} /> : null
-        }
+        {this.state.isCinemaListShown ? (
+          <CinemaList
+            cinemas={this.state.cinemas}
+            movieInfo={this.state.movieInfo}
+          />
+        ) : null}
       </Container>
     );
   }

@@ -4,7 +4,12 @@ const styles = theme => ({
     marginRight: theme.spacing(1),
     marginTop: theme.spacing(25),
     marginBottom: theme.spacing(0),
-    width: "90%"
+    width: "90%",
+    color: "midnightblue",
+    borderColor: "red"
+  },
+  appBar: {
+    backgroundColor: "midnightblue"
   }
 });
 
