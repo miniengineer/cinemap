@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 
+//material-ui
+import { Container } from "@material-ui/core";
+
 export default class App extends React.Component {
   constructor() {
     super();
@@ -23,11 +26,9 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-        </header>
-        <p></p>
-      </div>
+      <Container maxWidth = "md">
+        <p>Cookies</p>
+      </Container>
     );
   }
 }
