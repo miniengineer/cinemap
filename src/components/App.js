@@ -1,10 +1,14 @@
 import React from "react";
 import "./App.css";
 
+//components
+import Map from "./Map/Map";
+
 //material-ui
 import { Container, TextField } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
+import locations from "../data/locations";
 
 class App extends React.Component {
   constructor() {
@@ -25,7 +29,8 @@ class App extends React.Component {
           "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
         imdbRating: "6.5",
         summary: "awesome movie"
-      }
+      },
+      locations
     };
   }
 
@@ -34,16 +39,18 @@ class App extends React.Component {
 
     return (
       <Container maxWidth="md">
-        <p>Cookies</p>
+        <h1>Cinemap 🎥 🗺</h1>
         <TextField
           id="outlined-basic"
           className={classes.textField}
           label="Movie Title"
           margin="normal"
           variant="outlined"
+          label="Let's go to the cinema! 📽"
+          placeholder="What movie do you want to watch? 🎥"
+          style={{ width: "100%" }}
         />
-        {/* Map goes here */}
-        {/* CinemaList goes here */}
+        <Map locations={this.state.locations}></Map>
       </Container>
     );
   }
