@@ -22,15 +22,28 @@ class App extends React.Component {
           lontitude: "11111",
           address: "Shinjuku-ku, Shinjuku 1-3-5",
           showtimes: ["2019-11-19T10:40:00+09:00", "2019-11-24T15:15:00+09:00"]
+        },
+        {
+          movie: "Harry Potter and the Goblet of Fire",
+          name: "Wald9",
+          latitude: "99999",
+          lontitude: "11111",
+          address: "Shibuya-ku, Minamiaoyama 2-5-10",
+          showtimes: ["2019-11-19T10:40:00+09:00", "2019-11-24T15:15:00+09:00"]
         }
       ],
-      movieInfo: {
+      movieInfo: [{
+        title: "Joker",
         imageUrl:
           "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-        imdbRating: "6.5",
-        summary: "awesome movie"
-      },
-      locations
+        imdbRating: "8.8",
+        summary: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker."
+      }, {
+        title: "Harry Potter and the Goblet of Fire",
+        imageUrl: "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+        imdbRating: "7.7",
+        summary: "In his fourth year at Hogwarts, Harry is unwittingly selected to compete in the inter-school Triwizard Tournament. Meanwhile, the wizarding world remains unaware of the ominous rise of dark forces."
+      }],
     };
   }
 
