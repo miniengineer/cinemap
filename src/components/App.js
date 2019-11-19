@@ -3,6 +3,7 @@ import "./App.css";
 
 //components
 import Map from "./Map/Map";
+import CinemaList from "./CinemaList/CinemaList";
 
 //material-ui
 import { Container, TextField } from "@material-ui/core";
@@ -25,7 +26,7 @@ class App extends React.Component {
           showtimes: ["2019-11-19T10:40:00+09:00", "2019-11-24T15:15:00+09:00"]
         },
         {
-          movie: "Harry Potter and the Goblet of Fire",
+          movie: "Joker",
           name: "Wald9",
           latitude: "99999",
           lontitude: "11111",
@@ -33,26 +34,20 @@ class App extends React.Component {
           showtimes: ["2019-11-19T10:40:00+09:00", "2019-11-24T15:15:00+09:00"]
         }
       ],
-      movieInfo: [{
-        title: "Joker",
+      movieInfo: {
         imageUrl:
           "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
         imdbRating: "8.8",
         summary: "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker."
-      }, {
-        title: "Harry Potter and the Goblet of Fire",
-        imageUrl: "http://image.tmdb.org/t/p/w154/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-        imdbRating: "7.7",
-        summary: "In his fourth year at Hogwarts, Harry is unwittingly selected to compete in the inter-school Triwizard Tournament. Meanwhile, the wizarding world remains unaware of the ominous rise of dark forces."
-      }],
+      },
       locations,
+      isCinemaListShown: false
     };
   }
 
   handleMovieInput = (e) => {
     if (e.key === "Enter") {
-      console.log("Your movie is ",e.target.value);
-      this.setState({ selectedMovie: e.target.value });
+      this.setState({ selectedMovie: e.target.value, isCinemaListShown: true });
       e.target.value = "";
     }
   }
@@ -73,6 +68,9 @@ class App extends React.Component {
           onKeyDown={this.handleMovieInput}
         />
         <Map locations={this.state.locations}></Map>
+        {
+          this.state.isCinemaListShown ? <CinemaList  cinemas={this.state.cinemas} movieInfo={this.state.movieInfo} /> : null
+        }
       </Container>
     );
   }
