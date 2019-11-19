@@ -43,12 +43,10 @@ class App extends React.Component {
         <TextField
           id="outlined-basic"
           className={classes.textField}
-          label="Movie Title"
           margin="normal"
           variant="outlined"
           label="Let's go to the cinema! 📽"
           placeholder="What movie do you want to watch? 🎥"
-          style={{ width: "100%" }}
         />
         <Map locations={this.state.locations}></Map>
       </Container>
