@@ -38,11 +38,15 @@ const MyMap = withGoogleMap(props => (
         visible={props.showingInfoWindow}
       >
         <div id="infoWindow">
-          <h3>{props.selectedPlace.cinema.split("-").join(" ")}</h3>
-          <p>{props.selectedPlace.address.display_text}</p>
-          {props.selectedPlace.showtimes.map(showtime => (
-            <h4 key={showtime}>{showtime}</h4>
-          ))}
+          <h4>{props.selectedPlace.cinema.split("-").join(" ")}</h4>
+          <div id="infoWindow-address">
+            {props.selectedPlace.address.display_text}
+          </div>
+          <div id="infoWindow-showtimes">
+            {props.selectedPlace.showtimes.map(showtime => (
+              <h4 key={showtime}>{showtime}</h4>
+            ))}
+          </div>
         </div>
       </InfoWindow>
     )}
