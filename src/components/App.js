@@ -51,22 +51,22 @@ class App extends React.Component {
   }
 
   handleMovieInput = async (e) => {
-    if (e.key === "Enter") {
-      await this.setState({ selectedMovie: e.target.value });
-      //e.target.value = "";
-      const showtimes = await axios.get(`/api/cinemas/${this.state.selectedMovie}`);
-      const cinemas = showtimes.data.reduce((acc, info) => {
-        let obj = {};
-        obj.movie = this.state.selectedMovie;
-        obj.name = info[1].cinemaName;
-        obj.latitude = info[1].latitude;
-        obj.longitude = info[1].longitude;
-        obj.address = info[1].address.display_text;
-        obj.showtimes = info[1].showtimes;
-        acc.push(obj);
-        return acc;
-      }, []);
-      this.setState({ cinemas, isCinemaListShown: true }, () => console.log(this.state.cinemas));
+    this.setState({ selectedMovie: e.target.value }, () => console.log(this.state.selectedMovie));
+    if (e.key === "Enter" || e === "search") {
+      console.log("I work");
+      // const showtimes = await axios.get(`/api/cinemas/${this.state.selectedMovie}`);
+      // const cinemas = showtimes.data.reduce((acc, info) => {
+      //   let obj = {};
+      //   obj.movie = this.state.selectedMovie;
+      //   obj.name = info[1].cinemaName;
+      //   obj.latitude = info[1].latitude;
+      //   obj.longitude = info[1].longitude;
+      //   obj.address = info[1].address.display_text;
+      //   obj.showtimes = info[1].showtimes;
+      //   acc.push(obj);
+      //   return acc;
+      // }, []);
+      // this.setState({ cinemas, isCinemaListShown: true }, () => console.log(this.state.cinemas));
     }
   };
 
@@ -98,9 +98,9 @@ class App extends React.Component {
             variant="filled"
             label="What are we watching? 🎥"
             placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
-            onKeyDown={this.handleMovieInput}
+            onKeyUp={this.handleMovieInput}
           />
-          <Fab color="primary" aria-label="search" className={classes.fab}>
+          <Fab color="primary" aria-label="search" className={classes.fab} onClick={(e) => this.handleMovieInput("search")}>
             <SearchIcon />
           </Fab>
         </div>
