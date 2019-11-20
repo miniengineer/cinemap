@@ -4,6 +4,7 @@ import "./App.css";
 //components
 import Map from "./Map/Map";
 import CinemaList from "./CinemaList/CinemaList";
+import cinemapLogoIcon from "../assets/cinemap-logo-white-v.png";
 
 //material-ui
 import { Container, TextField, AppBar, Grid, Fab } from "@material-ui/core";
@@ -62,15 +63,15 @@ class App extends React.Component {
       <Container className="App" maxWidth="md">
         <AppBar className={classes.appBar}>
           <Grid container spacing={3} justify="center" alignItems="center">
-            <Grid item xs="3" id="home">
+            <Grid item id="home">
               <h3>HOME</h3>
             </Grid>
 
-            <Grid item xs="6">
-              {" "}
-              <h1>Cinemap</h1>
+            <Grid item xs={6}>
+              <img width="100%" src={cinemapLogoIcon}></img>
             </Grid>
-            <Grid item xs="3" id="about">
+
+            <Grid item xs={3} id="about">
               <h3>ABOUT</h3>
             </Grid>
           </Grid>
@@ -81,7 +82,7 @@ class App extends React.Component {
             className={classes.textField}
             margin="normal"
             variant="filled"
-            label="What movie do you want to watch? 🎥"
+            label="What are we watching? 🎥"
             placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
             onKeyDown={this.handleMovieInput}
           />

@@ -27,7 +27,7 @@ h2 {
 }
 
 .search {
-  margin-top: 140px;
+  margin-top: 25%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -79,4 +79,16 @@ h2 {
 }
 #infoWindow-showtimes h4 {
   width: 20%;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo-container img {
+  width: 10%;
 }

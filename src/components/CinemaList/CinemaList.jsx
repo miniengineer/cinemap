@@ -24,7 +24,7 @@ function CinemaList(props) {
         MOVIE INFO
       </Typography>
       <br />
-      <Grid item xs="12">
+      <Grid item xs={12}>
         <Card className={classes.card} xs="12">
           <CardActionArea>
             <CardMedia
@@ -50,7 +50,7 @@ function CinemaList(props) {
               <br />
               <Typography
                 className={classes.alignLeft}
-                variant="h8"
+                variant="h6"
                 component="h4"
               >
                 <Chip
