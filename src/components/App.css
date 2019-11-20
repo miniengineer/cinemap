@@ -59,6 +59,19 @@ h2 {
   border-bottom: none !important;
 }
 
+.day-card:hover {
+  background: white;
+}
+
+#showtime-chip {
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+}
+
+#cinema-card {
+  border: rgb(248, 220, 255) 1px solid;
+}
+
 /* MAP */
 
 .mapContainer {
