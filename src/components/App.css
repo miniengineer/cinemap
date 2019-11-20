@@ -1,6 +1,7 @@
 body {
   text-align: center;
-  background: rgb(255, 255, 255);
+  background: url("../assets/background.png");
+  background-size: 10%;
 }
 
 .App {
@@ -10,10 +11,72 @@ body {
 h1 {
   font-family: Aquino;
   font-weight: 400;
-  font-size: 35pt;
+  font-size: 200%;
 }
 
-h3 {
-  font-family: Aquino;
+h3,
+h2 {
+  font-family: Aquino !important;
   font-weight: 400;
+}
+
+.appBar-under {
+  width: 100vw;
+  height: 20vh;
+  background: red;
+}
+
+.search {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#about,
+#home {
+  cursor: pointer;
+  transition: 0.05s linear;
+}
+
+#about:hover,
+#home:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+.MuiChip-root {
+  font-size: 10px !important;
+}
+
+.MuiFilledInput-root {
+  background: white !important;
+  border: rgb(167, 166, 246) 1px solid !important;
+}
+
+.MuiFilledInput-root:before {
+  border-bottom: none !important;
+}
+
+/* MAP */
+
+.mapContainer {
+  border: aliceblue 3px solid;
+}
+
+#infoWindow {
+  min-width: 200px;
+  flex-wrap: wrap;
+  max-width: 200px;
+}
+
+#infoWindow-showtimes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#infoWindow-showtimes h4 {
+  width: 20%;
 }
