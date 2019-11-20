@@ -75,22 +75,30 @@ app.get("/api/cinemas/:title", async (req, res) => {
 
   const imdbMoviesResponce = await axios.get(
     `https://imdb8.p.rapidapi.com/title/find?q=${title}`,
-    { headers: {'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-    'x-rapidapi-key': `${imdbApikey}`}
-    });
+    {
+      headers: {
+        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "x-rapidapi-key": `${imdbApikey}`
+      }
+    }
+  );
   const imdbMovieData = imdbMoviesResponce.data;
   const imdbMovieId = imdbMovieData.results[0].id.slice(7, 16);
   const imdbMovieOverviewResponce = await axios.get(
     `https://imdb8.p.rapidapi.com/title/get-overview-details?currentCountry=US&tconst=${imdbMovieId}`,
-    { headers: {'x-rapidapi-host': 'imdb8.p.rapidapi.com',
-    'x-rapidapi-key': `${imdbApikey}`}
-    });
+    {
+      headers: {
+        "x-rapidapi-host": "imdb8.p.rapidapi.com",
+        "x-rapidapi-key": `${imdbApikey}`
+      }
+    }
+  );
   const imdbMovieOverviewData = imdbMovieOverviewResponce.data;
   const imdbDataCollection = {
     duration: imdbMovieOverviewData.title.runningTimeInMinutes,
-    imageUrl: imdbMovieOverviewData.title.image.url,
+    image_url: imdbMovieOverviewData.title.image.url,
     rating: imdbMovieOverviewData.ratings.rating,
-    summary: imdbMovieOverviewData.plotSummary.text,
+    summary: imdbMovieOverviewData.plotSummary.text
   };
 
   const cinemaResponseObject = {};
@@ -116,5 +124,5 @@ app.get("/api/cinemas/:title", async (req, res) => {
   tokyoCinemas = tokyoCinemas.filter(
     cinemaArr => cinemaArr[1].address.state === "Tokyo"
   );
-  res.send({tokyoCinemas, imdbDataCollection});
+  res.send({ tokyoCinemas, imdbDataCollection });
 });
