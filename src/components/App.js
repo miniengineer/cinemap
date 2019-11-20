@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import axios from "axios";
 
 //components
 import Map from "./Map/Map";
@@ -43,14 +44,27 @@ class App extends React.Component {
           "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker."
       },
       locations,
-      isCinemaListShown: true
+      isCinemaListShown: false
     };
   }
 
-  handleMovieInput = e => {
+  handleMovieInput = async (e) => {
     if (e.key === "Enter") {
-      this.setState({ selectedMovie: e.target.value, isCinemaListShown: true });
-      e.target.value = "";
+      await this.setState({ selectedMovie: e.target.value });
+      //e.target.value = "";
+      const showtimes = await axios.get(`/api/cinemas/${this.state.selectedMovie}`);
+      const cinemas = showtimes.data.reduce((acc, info) => {
+        let obj = {};
+        obj.movie = this.state.selectedMovie;
+        obj.name = info[1].cinemaName;
+        obj.latitude = info[1].latitude;
+        obj.longitude = info[1].longitude;
+        obj.address = info[1].address.display_text;
+        obj.showtimes = info[1].showtimes;
+        acc.push(obj);
+        return acc;
+      }, []);
+      this.setState({ cinemas, isCinemaListShown: true }, () => console.log(this.state.cinemas));
     }
   };
 

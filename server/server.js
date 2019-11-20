@@ -22,7 +22,7 @@ app.get("/api/currently-showing", async (req, res) => {
       }
     })
     const filteredMovieIds = currentlyShowingMovieIds.filter((id) => id !== null);
-    const currentlyShowingMovieTitles = filteredMovieIds.map((id) => {
+    const currentlyShowingMovieTitles = filteredMovieIds.map(async(id) => {
       const movieResponse = await axios.get(`https://api.internationalshowtimes.com/v4/movies/${id}?apikey=${apikey}`)
       return movieResponse.data.movie.title
     })
