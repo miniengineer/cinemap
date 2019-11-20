@@ -92,6 +92,7 @@ function CinemaList(props) {
                   <Typography gutterBottom variant="h5" component="h4">
                     {cinema.name}
                   </Typography>
+                  {cinema.address}
                   <br />
                   <Grid
                     container
@@ -105,49 +106,63 @@ function CinemaList(props) {
                         new Date(showtime).toLocaleDateString("en-US", {
                           month: "short",
                           day: "numeric"
+                          // year: "numeric"
                         })
                       )
                       .filter((date, i, dates) => dates.indexOf(date) === i)
                       .map(showtime => (
                         <Grid
                           item
-                          xs="4"
                           container
                           spacing={3}
                           direction="row"
-                          justify="flex-start"
+                          justify="space-around"
                           alignItems="flex-start"
                         >
                           <Grid item xs="12" id="day-card">
                             <Card className={classes.card}>
                               <CardActionArea focusHighlight="">
                                 <CardContent>
-                                  <h4>{showtime}</h4>
-                                  {cinema.showtimes
-                                    .map(showtime =>
-                                      new Date(showtime).toLocaleDateString(
-                                        "en-US",
-                                        {
-                                          month: "short",
-                                          day: "numeric",
-                                          hour: "numeric",
-                                          minute: "numeric"
-                                        }
-                                      )
-                                    )
-                                    .filter(
-                                      (date, i, dates) =>
-                                        date.split(",")[0] === showtime
-                                    )
-                                    .map(showtime => (
-                                      <Chip
-                                        clickable
-                                        id="showtime-chip"
-                                        size="small"
-                                        label={showtime.split(" ")[2]}
-                                        color="primary"
-                                      ></Chip>
-                                    ))}
+                                  <Grid
+                                    container
+                                    spacing={3}
+                                    direction="row"
+                                    justify="space-around"
+                                    alignItems="flex-start"
+                                  >
+                                    <Grid item xs="4" id="day-card">
+                                      <h2 id="day-title">{showtime}</h2>
+                                    </Grid>
+                                    <Grid item xs="8" id="day-card">
+                                      {cinema.showtimes
+                                        .map(showtime =>
+                                          new Date(showtime).toLocaleDateString(
+                                            "en-US",
+                                            {
+                                              month: "short",
+                                              day: "numeric",
+                                              hour: "numeric",
+                                              minute: "numeric"
+                                            }
+                                          )
+                                        )
+                                        .filter(
+                                          (date, i, dates) =>
+                                            date.split(",")[0] === showtime
+                                        )
+                                        .map(showtime => (
+                                          <Chip
+                                            clickable
+                                            id="showtime-chip"
+                                            size="medium"
+                                            label={showtime
+                                              .split(" ")[2]
+                                              .concat(showtime.split(" ")[3])}
+                                            color="primary"
+                                          ></Chip>
+                                        ))}
+                                    </Grid>
+                                  </Grid>
                                 </CardContent>
                               </CardActionArea>
                             </Card>
