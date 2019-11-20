@@ -58,7 +58,6 @@ app.get("/api/cinemas/:title", async (req, res) => {
     };
   });
   const cinemaResponseObject = {};
-  console.log({ cinemaIdToNameMap });
   showtimesObject.showtimes.forEach(showtime => {
     if (!cinemaResponseObject[showtime.cinema_id]) {
       cinemaResponseObject[showtime.cinema_id] = {
