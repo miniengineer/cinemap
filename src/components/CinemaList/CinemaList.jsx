@@ -12,6 +12,16 @@ import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 
 function CinemaList(props) {
+  const days = props.cinemas.map(cinema =>
+    cinema.showtimes.map(showtime =>
+      new Date(showtime).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric"
+      })
+    )
+  );
+
+  console.log(days);
   const { classes } = props;
   console.log(props.movieInfo.imageUrl);
 
@@ -74,47 +84,78 @@ function CinemaList(props) {
       <Grid container spacing={3} justify="center" alignItems="center">
         {props.cinemas.map((cinema, i) => {
           return (
-            <Grid item xs="6">
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardContent>
-                    <br />
-                    <br />
-                    <Typography gutterBottom variant="h5" component="h4">
-                      {cinema.name}
-                    </Typography>
-                    <br />
-                    Showing at:
-                    <br />
-                    <br />
-                    <Grid
-                      container
-                      spacing={1}
-                      direction="column"
-                      justify="space-around"
-                      alignItems="center"
-                    >
-                      {cinema.showtimes.map(showtime => (
-                        <Grid item xs="12">
-                          <Chip
-                            size="small"
-                            label={new Date(showtime).toLocaleDateString(
-                              "en-US",
-                              {
-                                month: "short",
-                                day: "numeric",
-                                year: "numeric",
-                                hour: "numeric",
-                                minute: "numeric"
-                              }
-                            )}
-                            color="primary"
-                          ></Chip>
+            <Grid item xs="12">
+              <Card id="cinema-card" className={classes.card}>
+                <CardContent>
+                  <br />
+                  <br />
+                  <Typography gutterBottom variant="h5" component="h4">
+                    {cinema.name}
+                  </Typography>
+                  <br />
+                  <Grid
+                    container
+                    spacing={1}
+                    direction="row"
+                    justify="space-around"
+                    alignItems="center"
+                  >
+                    {cinema.showtimes
+                      .map(showtime =>
+                        new Date(showtime).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric"
+                        })
+                      )
+                      .filter((date, i, dates) => dates.indexOf(date) === i)
+                      .map(showtime => (
+                        <Grid
+                          item
+                          xs="4"
+                          container
+                          spacing={3}
+                          direction="row"
+                          justify="flex-start"
+                          alignItems="flex-start"
+                        >
+                          <Grid item xs="12" id="day-card">
+                            <Card className={classes.card}>
+                              <CardActionArea focusHighlight="">
+                                <CardContent>
+                                  <h4>{showtime}</h4>
+                                  {cinema.showtimes
+                                    .map(showtime =>
+                                      new Date(showtime).toLocaleDateString(
+                                        "en-US",
+                                        {
+                                          month: "short",
+                                          day: "numeric",
+                                          hour: "numeric",
+                                          minute: "numeric"
+                                        }
+                                      )
+                                    )
+                                    .filter(
+                                      (date, i, dates) =>
+                                        date.split(",")[0] === showtime
+                                    )
+                                    .map(showtime => (
+                                      <Chip
+                                        clickable
+                                        id="showtime-chip"
+                                        size="small"
+                                        label={showtime.split(" ")[2]}
+                                        color="primary"
+                                      ></Chip>
+                                    ))}
+                                </CardContent>
+                              </CardActionArea>
+                            </Card>
+                          </Grid>
                         </Grid>
                       ))}
-                    </Grid>
-                  </CardContent>
-                </CardActionArea>
+                  </Grid>
+                </CardContent>
               </Card>
             </Grid>
           );
