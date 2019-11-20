@@ -6,7 +6,8 @@ import Map from "./Map/Map";
 import CinemaList from "./CinemaList/CinemaList";
 
 //material-ui
-import { Container, TextField, AppBar, Grid } from "@material-ui/core";
+import { Container, TextField, AppBar, Grid, Fab } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "./styles";
 import locations from "../data/locations";
@@ -61,7 +62,7 @@ class App extends React.Component {
       <Container className="App" maxWidth="md">
         <AppBar className={classes.appBar}>
           <Grid container spacing={3} justify="center" alignItems="center">
-            <Grid item xs="3">
+            <Grid item xs="3" id="home">
               <h3>HOME</h3>
             </Grid>
 
@@ -69,20 +70,26 @@ class App extends React.Component {
               {" "}
               <h1>Cinemap</h1>
             </Grid>
-            <Grid item xs="3">
+            <Grid item xs="3" id="about">
               <h3>ABOUT</h3>
             </Grid>
           </Grid>
         </AppBar>
-        <TextField
-          id="outlined-basic"
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-          label="What movie do you want to watch? 🎥"
-          placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
-          onKeyDown={this.handleMovieInput}
-        />
+        <div className="search" height="25%">
+          <TextField
+            id="filled-basic"
+            className={classes.textField}
+            margin="normal"
+            variant="filled"
+            label="What movie do you want to watch? 🎥"
+            placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
+            onKeyDown={this.handleMovieInput}
+          />
+          <Fab color="primary" aria-label="search" className={classes.fab}>
+            <SearchIcon />
+          </Fab>
+        </div>
+
         <Map locations={this.state.locations}></Map>
         {this.state.isCinemaListShown ? (
           <CinemaList
