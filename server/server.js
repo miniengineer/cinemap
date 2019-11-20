@@ -24,14 +24,14 @@ app.get("/api/cinemas/:title", async (req, res) => {
     res.send([]);
   }
   const movieId = movieObject.movies[0].id;
-  const showtimesResponce = await axios.get(
+  //optimized API calls, faster by 3 seconds
+  const responces = await Promise.all([axios.get(
     `https://api.internationalshowtimes.com/v4/showtimes?countries=JP&movie_id=${movieId}&apikey=${apikey}`
-  );
-  const showtimesObject = showtimesResponce.data;
-  const allCinemasResponce = await axios.get(
+  ), axios.get(
     `https://api.internationalshowtimes.com/v4/cinemas/?countries=JP&apikey=${apikey}`
-  );
-  const allCinemasInJapan = allCinemasResponce.data;
+  )]);
+  const showtimesObject = responces[0].data;
+  const allCinemasInJapan = responces[1].data;
   const cinemaIdToNameMap = {};
   allCinemasInJapan.cinemas.forEach(cinema => {
     cinemaIdToNameMap[cinema.id] = {
