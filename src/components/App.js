@@ -112,6 +112,7 @@ class App extends React.Component {
             </Grid>
           </Grid>
         </AppBar>
+        <h2 id="welcome">Find where to watch your movie.</h2>
         <div className="search" height="25%">
           <TextField
             id="filled-basic"
