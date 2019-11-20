@@ -17,6 +17,7 @@ import locations from "../data/locations";
 class App extends React.Component {
   constructor() {
     super();
+    // create ref this.input
     this.state = {
       selectedMovie: "",
       cinemas: [
@@ -69,9 +70,9 @@ class App extends React.Component {
   }
 
   handleMovieInput = async e => {
-    if (e.key === "Enter") {
-      await this.setState({ selectedMovie: e.target.value });
-      //e.target.value = "";
+    if (e.target) await this.setState({ selectedMovie: e.target.value });
+    if (e.key === "Enter" || e === "search") {
+      console.log("Searching...");
       const showtimes = await axios.get(
         `/api/cinemas/${this.state.selectedMovie}`
       );
@@ -122,7 +123,14 @@ class App extends React.Component {
             placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
             onKeyDown={this.handleMovieInput}
           />
-          <Fab color="primary" aria-label="search" className={classes.fab}>
+          <Fab
+            onClick={() => {
+              this.handleMovieInput("search");
+            }}
+            color="primary"
+            aria-label="search"
+            className={classes.fab}
+          >
             <SearchIcon />
           </Fab>
         </div>
