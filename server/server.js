@@ -61,7 +61,7 @@ app.get("/api/cinemas/:title", async (req, res) => {
   showtimesObject.showtimes.forEach(showtime => {
     if (!cinemaResponseObject[showtime.cinema_id]) {
       cinemaResponseObject[showtime.cinema_id] = {
-        cinemaName: cinemaIdToNameMap[showtime.cinema_id].name,
+        cinemaName: cinemaIdToNameMap[showtime.cinema_id].cinemaName,
         cinemaId: showtime.cinema_id,
         movieName: title,
         movieId,
