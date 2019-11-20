@@ -63,7 +63,7 @@ class App extends React.Component {
       <Container className="App" maxWidth="md">
         <AppBar className={classes.appBar}>
           <Grid container spacing={3} justify="center" alignItems="center">
-            <Grid item id="home">
+            <Grid item id="home" xs={3}>
               <h3>HOME</h3>
             </Grid>
 
