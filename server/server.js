@@ -33,15 +33,11 @@ app.get("/api/cinemas/:title", async (req, res) => {
   );
   const allCinemasInJapan = allCinemasResponce.data;
   const cinemaIdToNameMap = {};
-  console.log({ allCinemasInJapan });
   allCinemasInJapan.cinemas.forEach(cinema => {
-    console.log({ cinema });
     cinemaIdToNameMap[cinema.id] = {
       cinemaName: cinema.name,
       cinemaId: cinema.id,
-      address: cinema.location.address, //this is an object
-      latitude: cinema.location.lat,
-      longitude: cinema.location.lon
+      location: cinema.location //this is an object
     };
   });
   const cinemaResponseObject = {};
@@ -52,7 +48,7 @@ app.get("/api/cinemas/:title", async (req, res) => {
         cinemaId: showtime.cinema_id,
         movieName: title,
         movieId,
-        address: cinemaIdToNameMap[showtime.cinema_id].address, //this is an object
+        address: cinemaIdToNameMap[showtime.cinema_id].location.address, //this is an object
         latitude: cinemaIdToNameMap[showtime.cinema_id].location.lat,
         longitude: cinemaIdToNameMap[showtime.cinema_id].location.lon,
         showtimes: [showtime.start_at]
@@ -63,6 +59,8 @@ app.get("/api/cinemas/:title", async (req, res) => {
       );
     }
   });
-  res.send(cinemaResponseObject);
+  let tokyoCinemas = Object.entries(cinemaResponseObject);
+  tokyoCinemas = tokyoCinemas.filter(cinemaArr => cinemaArr[1].address.state === "Tokyo");
+  res.send(tokyoCinemas);
 });
 
