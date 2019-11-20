@@ -18,6 +18,12 @@ function CinemaList(props) {
   return (
     <React.Fragment>
       {/* MOVIE INFO */}
+      <br />
+      <br />
+      <Typography gutterBottom variant="h5" component="h2">
+        MOVIE INFO
+      </Typography>
+      <br />
       <Grid item xs="12">
         <Card className={classes.card} xs="12">
           <CardActionArea>
@@ -25,11 +31,11 @@ function CinemaList(props) {
               component="img"
               height="140"
               src="https://dazedimg-dazedgroup.netdna-ssl.com/900/azure/dazed-prod/1270/8/1278472.jpg"
-              title={props.movieInfo.movie}
+              title={props.movieInfo.movie.toUpperCase()}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {props.movieInfo.movie}
+              <Typography gutterBottom variant="h5" component="h4">
+                {props.movieInfo.movie.toUpperCase()}
               </Typography>
               <Typography variant="body2" color="textPrimary" component="p">
                 {props.movieInfo.summary}
@@ -42,48 +48,54 @@ function CinemaList(props) {
                 component="h2"
               ></Typography>
               <br />
-
-              <br />
               <Typography
                 className={classes.alignLeft}
                 variant="h8"
-                component="h2"
+                component="h4"
               >
-                {props.movieInfo.imdbRating} IMDB
+                <Chip
+                  size="medium"
+                  label={props.movieInfo.imdbRating + " IMDB"}
+                >
+                  {" "}
+                </Chip>
               </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
       </Grid>
       {/* CINEMAS */}
+      <br />
+      <br />
+      <Typography gutterBottom variant="h5" component="h2">
+        CINEMAS SHOWING {props.movieInfo.movie.toUpperCase()}
+      </Typography>
+      <br />
       <Grid container spacing={3} justify="center" alignItems="center">
         {props.cinemas.map((cinema, i) => {
           return (
             <Grid item xs="6">
               <Card className={classes.card}>
                 <CardActionArea>
-                  {/* <CardMedia
-                    component="img"
-                    height="140"
-                    src="https://dazedimg-dazedgroup.netdna-ssl.com/900/azure/dazed-prod/1270/8/1278472.jpg"
-                    title={props.movieInfo.movie}
-                  /> */}
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <br />
+                    <br />
+                    <Typography gutterBottom variant="h5" component="h4">
                       {cinema.name}
                     </Typography>
                     <br />
                     Showing at:
                     <br />
                     <br />
-                    {cinema.showtimes.map(showtime => (
-                      <Grid
-                        container
-                        spacing={1}
-                        // justify="center"
-                        // alignItems="center"
-                      >
-                        <Grid item xs="3">
+                    <Grid
+                      container
+                      spacing={1}
+                      direction="column"
+                      justify="space-around"
+                      alignItems="center"
+                    >
+                      {cinema.showtimes.map(showtime => (
+                        <Grid item xs="12">
                           <Chip
                             size="small"
                             label={new Date(showtime).toLocaleDateString(
@@ -99,8 +111,8 @@ function CinemaList(props) {
                             color="primary"
                           ></Chip>
                         </Grid>
-                      </Grid>
-                    ))}
+                      ))}
+                    </Grid>
                   </CardContent>
                 </CardActionArea>
               </Card>
