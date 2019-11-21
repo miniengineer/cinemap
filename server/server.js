@@ -1,11 +1,11 @@
-require("dotenv").config();
+//require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
 const axios = require("axios");
 const { getShowtimeDataByTitle } = require("./utils/utils");
 
-const imdbApikey = process.env.IMDB_API_KEY;
+//const imdbApikey = process.env.IMDB_API_KEY;
 
 app.use(express.static(path.join(__dirname, "..", "build")));
 
