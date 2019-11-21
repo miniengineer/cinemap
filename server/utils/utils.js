@@ -543,11 +543,10 @@ const getMovieIdByTitle = (title) => {
 const getShowtimeDataByTitle = (title) => {
   const movieId = getMovieIdByTitle(title);
   let showtimeInfo = [];
-  axios.get(`https://api.internationalshowtimes.com/v4/showtimes?movie_id=${movieId}&location=35.6762,139.6503&distance=30&apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6`)
+  const showtimes = axios.get(`https://api.internationalshowtimes.com/v4/showtimes?movie_id=${movieId}&location=35.6762,139.6503&distance=30&apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6`)
   .then(response => response.data.showtimes.filter(showtime => tokyoCinemaIds.includes(showtime.cinema_id)))
   .then(showtimesArr => showtimesArr.forEach(showtimeObj => {
     const currentCinema = cinemaInfos.find(cinema => cinema.id === showtimeObj.cinema_id);
-    console.log({ currentCinema });
     //if there is no cinema info for this cinema yet
     if (!showtimeInfo.find(showtime => showtime[0] === currentCinema.name)) {
       showtimeInfo.push([
@@ -562,7 +561,6 @@ const getShowtimeDataByTitle = (title) => {
         }
       ]);
     } else {
-      console.log("I am in the else");
       //if there is already this cinema obj, just add the showtime
       let showtimeToAddTime = showtimeInfo.find(showtime => showtime[0] === currentCinema.name);
       const index = showtimeInfo.indexOf(showtimeToAddTime);
@@ -570,12 +568,12 @@ const getShowtimeDataByTitle = (title) => {
       showtimeInfo[index] = showtimeToAddTime;
     }
   }))
-  .then(() => console.log(showtimeInfo));
+  .then(() => showtimeInfo);
+  return showtimes;
 }
 
-[[]]
+module.exports = { getShowtimeDataByTitle };
 
 
-getShowtimeDataByTitle('Joker');
 
 
