@@ -17,7 +17,6 @@ import locations from "../data/locations";
 class App extends React.Component {
   constructor() {
     super();
-    // create ref this.input
     this.state = {
       selectedMovie: "",
       cinemas: [
@@ -29,11 +28,11 @@ class App extends React.Component {
           address: "Shinjuku-ku, Shinjuku 1-3-5",
           showtimes: [
             "2019-11-19T10:40:00+09:00",
-            "2019-11-24T15:15:00+09:00",
-            "2019-11-25T10:40:00+09:00",
-            "2019-11-25T15:15:00+09:00",
-            "2019-11-27T10:40:00+09:00",
-            "2019-11-29T15:15:00+09:00",
+            "2019-11-19T15:15:00+09:00",
+            "2019-11-19T10:40:00+09:00",
+            "2019-11-19T15:15:00+09:00",
+            "2019-11-19T10:40:00+09:00",
+            "2019-11-19T15:15:00+09:00",
             "2019-11-29T10:40:00+09:00",
             "2019-11-24T15:16:00+09:00"
           ]
@@ -98,14 +97,14 @@ class App extends React.Component {
 
     return (
       <Container className="App" maxWidth="md">
-        <AppBar className={classes.appBar}>
+        <AppBar id="app-bar" className={classes.appBar}>
           <Grid container spacing={3} justify="center" alignItems="center">
             <Grid item id="home" xs={3}>
               <h3>HOME</h3>
             </Grid>
 
             <Grid item xs={6}>
-              <img width="100%" src={cinemapLogoIcon}></img>
+              <img width="70%" src={cinemapLogoIcon}></img>
             </Grid>
 
             <Grid item xs={3} id="about">
@@ -113,6 +112,7 @@ class App extends React.Component {
             </Grid>
           </Grid>
         </AppBar>
+        <h2 id="welcome">Find where to watch your movie.</h2>
         <div className="search" height="25%">
           <TextField
             id="filled-basic"
@@ -138,8 +138,8 @@ class App extends React.Component {
         <Map locations={this.state.locations}></Map>
         {this.state.isCinemaListShown ? (
           <CinemaList
-            cinemas={this.state.cinemas}
-            movieInfo={this.state.movieInfo}
+            cinemas={this.state.cinemas} // FROM INTERNATIONAL API CALL
+            movieInfo={this.state.movieInfo} // FROM IMDB CALL
           />
         ) : null}
       </Container>

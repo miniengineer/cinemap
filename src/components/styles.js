@@ -10,7 +10,7 @@ const styles = theme => ({
     borderColor: "red"
   },
   appBar: {
-    backgroundColor: "midnightblue"
+    backgroundColor: "rgb(72, 40, 159)"
   }
 });
 

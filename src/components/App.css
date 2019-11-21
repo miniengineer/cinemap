@@ -1,4 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa&display=swap");
+@font-face {
+  font-family: Aquin;
+  src: url("../assets/background.png");
+}
+
 body {
+  font-family: Comfortaa !important;
+
   text-align: center;
   background: url("../assets/background.png");
   background-size: 10%;
@@ -9,15 +17,27 @@ body {
 }
 
 h1 {
-  font-family: Aquino;
+  font-family: Aquin;
   font-weight: 400;
   font-size: 200%;
 }
 
+p {
+  font-family: Comfortaa !important;
+  color: black;
+}
+
 h3,
-h2 {
-  font-family: Aquino !important;
+h2,
+h4 {
+  font-family: Comfortaa !important;
   font-weight: 400;
+  color: rgb(102, 70, 189) !important;
+}
+
+/* appbar */
+.MuiGrid-spacing-xs-3 {
+  padding: 10px;
 }
 
 .appBar-under {
@@ -26,8 +46,25 @@ h2 {
   background: red;
 }
 
-.search {
+label,
+input {
+  font-family: Comfortaa !important;
+}
+
+#welcome {
   margin-top: 25%;
+  font-size: 3vw;
+}
+
+@media screen and (max-width: 700px) {
+  #welcome {
+    margin-top: 35%;
+    font-size: 5vw;
+  }
+}
+
+.search {
+  font-family: Comfortaa !important;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -36,14 +73,24 @@ h2 {
 
 #about,
 #home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   cursor: pointer;
-  transition: 0.05s linear;
 }
 
-#about:hover,
-#home:hover {
+#about h3,
+#home h3 {
+  transition: 0.05s linear;
+  color: rgb(170, 157, 207) !important;
+}
+
+#about h3:hover,
+#home h3:hover {
+  font-weight: 700;
   cursor: pointer;
-  transform: scale(1.15);
+  color: white !important;
 }
 
 .MuiChip-root {
@@ -68,7 +115,16 @@ h2 {
 }
 
 #cinema-card {
-  border: rgb(248, 220, 255) 1px solid;
+  border: rgb(177, 169, 207) 1px solid;
+}
+
+#day-title {
+  font-family: Comfortaa !important;
+  font-weight: 700;
+}
+
+header h3 {
+  color: white !important;
 }
 
 /* MAP */
