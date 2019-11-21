@@ -9,7 +9,18 @@ import {
   Chip
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
+// import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloud } from "@fortawesome/free-solid-svg-icons";
+import { faUmbrella } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles";
+
+const weatherIcons = {
+  "clear-day": faSun,
+  overcast: faCloud,
+  rain: faUmbrella
+};
 
 function CinemaList(props) {
   const days = props.cinemas.map(cinema =>
@@ -131,7 +142,31 @@ function CinemaList(props) {
                                     alignItems="flex-start"
                                   >
                                     <Grid item xs="4" id="day-card">
+                                      {/* <FontAwesomeIcon
+                                        icon={faCloud}
+                                        color="indigo"
+                                      />
+                                      <FontAwesomeIcon
+                                        icon={faUmbrella}
+                                        color="indigo"
+                                      />
+                                      <FontAwesomeIcon
+                                        icon={faSun}
+                                        color="indigo"
+                                      /> */}
                                       <h2 id="day-title">{showtime}</h2>
+                                      <h2 id="day-title">
+                                        {props.weather.map(day => {
+                                          if (day.time === showtime) {
+                                            return (
+                                              <FontAwesomeIcon
+                                                icon={weatherIcons[day.icon]}
+                                                color="indigo"
+                                              />
+                                            );
+                                          }
+                                        })}
+                                      </h2>
                                     </Grid>
                                     <Grid item xs="8" id="day-card">
                                       {cinema.showtimes
