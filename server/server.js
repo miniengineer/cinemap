@@ -24,7 +24,6 @@ app.get("/api/weather", async (req, res) => {
     }
   );
   const weatherOfTokyoData = weatherOfTokyoResponse.data;
-  console.log(weatherOfTokyoData);
 
   const dailyWeatherOfTokyoData = weatherOfTokyoData.daily.data;
 
@@ -122,6 +121,7 @@ app.get("/api/cinemas/:title", async (req, res) => {
   );
   const imdbMovieOverviewData = imdbMovieOverviewResponce.data;
   const imdbDataCollection = {
+    movie: imdbMovieOverviewData.title.title,
     duration: imdbMovieOverviewData.title.runningTimeInMinutes,
     image_url: imdbMovieOverviewData.title.image.url,
     rating: imdbMovieOverviewData.ratings.rating,
