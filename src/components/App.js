@@ -19,6 +19,14 @@ class App extends React.Component {
     super();
     this.state = {
       selectedMovie: "",
+      weather: [
+        { time: "Nov 19", icon: "rain" },
+        { time: "Nov 24", icon: "clear-day" },
+        { time: "Nov 25", icon: "overcast" },
+        { time: "Nov 27", icon: "clear-day" },
+        { time: "Nov 29", icon: "clear-day" }
+      ],
+
       cinemas: [
         {
           movie: "Joker",
@@ -138,6 +146,7 @@ class App extends React.Component {
         <Map locations={this.state.locations}></Map>
         {this.state.isCinemaListShown ? (
           <CinemaList
+            weather={this.state.weather}
             cinemas={this.state.cinemas} // FROM INTERNATIONAL API CALL
             movieInfo={this.state.movieInfo} // FROM IMDB CALL
           />
