@@ -24,19 +24,18 @@ app.get("/api/weather", async (req, res) => {
     }
   );
   const weatherOfTokyoData = weatherOfTokyoResponse.data;
-  console.log(weatherOfTokyoData);
 
   const dailyWeatherOfTokyoData = weatherOfTokyoData.daily.data;
 
   const weather = dailyWeatherOfTokyoData.map(day => {
-  return {
-    time: new Date(day.time).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric"
-    }),
-    icon: day.icon
+    return {
+      time: new Date(day.time).toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric"
+      }),
+      icon: day.icon
     };
-  })
+  });
   res.send(weather);
 });
 
