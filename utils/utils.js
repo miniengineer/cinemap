@@ -1,44 +1,90 @@
 const axios = require("axios");
-const apikey = "GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6";
 
 const tokyoCinemaIds = [ '63599',
-'63601',
 '63604',
-'63606',
 '63610',
-'63611',
-'63614',
+'63620',
 '63618',
-'63665',
 '63668',
 '63671',
-'63672',
 '63673',
 '63690',
-'63697',
 '63701',
+'63702',
+'63704',
 '63723',
-'63725',
 '63726',
-'63821',
-'63831',
-'63836',
+'63747',
+'63756',
+'63794',
+'63806',
 '63837',
 '63842',
 '63844',
-'63846',
+'63848',
 '63849',
-'63852',
 '63853',
-'63854',
-'63985',
-'63997',
+'63873',
+'63931',
+'63962',
+'63966',
+'63963',
+'63969',
+'63967',
+'63970',
+'63973',
+'63974',
+'63977',
+'63982',
+'63983',
+'63986',
+'63987',
+'63990',
+'63988',
+'63991',
+'63992',
+'63994',
+'63996',
+'63999',
+'64000',
 '64001',
 '64002',
-'64004',
+'64003',
+'64006',
+'64010',
+'64013',
+'64018',
+'64056',
+'64060',
 '64076',
 '64097',
-'64100' ];
+'64100',
+'64101' ];
+
+// let newTokyoCinemaIds = [];
+// axios.get('https://api.internationalshowtimes.com/v4/cinemas?apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6')
+// .then(response => response.data.cinemas.forEach(cinema => {
+//   if (cinema.location.address.state === "Tokyo") {
+//     newTokyoCinemaIds.push(cinema.id);
+//   }
+// }))
+// .then(() => console.log(newTokyoCinemaIds));
+
+// let newCinemaInfos = [];
+
+// axios.get('https://api.internationalshowtimes.com/v4/cinemas?apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6')
+// .then(response => response.data.cinemas.forEach(cinema => {
+//   if (tokyoCinemaIds.includes(cinema.id)) {
+//     newCinemaInfos.push({
+//       id: cinema.id,
+//       name: cinema.name,
+//       latitude: cinema.location.lat,
+//       longitude: cinema.location.lon,
+//       address: cinema.location.address.display_text
+//     });
+//   }
+// }))
+// .then(() => console.log(newCinemaInfos));
 
 
 const cinemaInfos = [ { id: '63599',
@@ -57,16 +103,16 @@ latitude: 35.6736,
 longitude: 139.763,
 address:
  '【丸の内ピカデリー１・2】東京都千代田区有楽町2-5-1 有楽町マリオン9F【丸の内ピカデリー3】東京都千代田区有楽町2-5-1 有楽町マリオン新館5F' },
-{ id: '63618',
-name: 'MOVIX新宿ピカデリー',
-latitude: 35.6927,
-longitude: 139.704,
-address: '東京都新宿区新宿3丁目15番15号' },
 { id: '63620',
 name: 'MOVIX東劇',
 latitude: 35.6678,
 longitude: 139.769,
 address: '東京都中央区築地4-1-1 東劇ビル3F' },
+{ id: '63618',
+name: 'MOVIX新宿ピカデリー',
+latitude: 35.6927,
+longitude: 139.704,
+address: '東京都新宿区新宿3丁目15番15号' },
 { id: '63668',
 name: 'ＴＯＨＯシネマズ南大沢',
 latitude: 35.6146,
@@ -177,26 +223,26 @@ name: '岩波ホール',
 latitude: 35.6956,
 longitude: 139.758,
 address: '〒101-0051東京都千代田区神田神保町2-1 岩波神保町ビル10F' },
-{ id: '63963',
-name: '吉祥寺プラザ',
-latitude: 35.7029,
-longitude: 139.581,
-address: '〒180-0004東京都武蔵野市吉祥寺本町1-11-19' },
 { id: '63966',
 name: '吉祥寺オデヲン',
 latitude: 35.7065,
 longitude: 139.58,
 address: '〒180-0003東京都武蔵野市吉祥寺南町2-3-16' },
-{ id: '63967',
-name: '楽天地シネマズ錦糸町',
-latitude: 35.701,
-longitude: 139.816,
-address: '〒130-0022東京都墨田区江東橋4-27-14 楽天地ビル' },
+{ id: '63963',
+name: '吉祥寺プラザ',
+latitude: 35.7029,
+longitude: 139.581,
+address: '〒180-0004東京都武蔵野市吉祥寺本町1-11-19' },
 { id: '63969',
 name: '飯田橋ギンレイホール',
 latitude: 35.7013,
 longitude: 139.743,
 address: '〒162-0825東京都新宿区神楽坂2-19' },
+{ id: '63967',
+name: '楽天地シネマズ錦糸町',
+latitude: 35.701,
+longitude: 139.816,
+address: '〒130-0022東京都墨田区江東橋4-27-14 楽天地ビル' },
 { id: '63970',
 name: 'シネスイッチ銀座',
 latitude: 35.6677,
@@ -237,16 +283,16 @@ name: 'ル・シネマ',
 latitude: 35.6603,
 longitude: 139.707,
 address: '〒150-8507東京都渋谷区道玄坂2-24-1 Bunkamura6F' },
-{ id: '63988',
-name: '早稲田松竹',
-latitude: 35.7116,
-longitude: 139.708,
-address: '〒169-0075東京都新宿区高田馬場1-5-16' },
 { id: '63990',
 name: 'ラピュタ阿佐ヶ谷',
 latitude: 35.7059,
 longitude: 139.635,
 address: '〒166-0001東京都杉並区阿佐谷北2-12-21' },
+{ id: '63988',
+name: '早稲田松竹',
+latitude: 35.7116,
+longitude: 139.708,
+address: '〒169-0075東京都新宿区高田馬場1-5-16' },
 { id: '63991',
 name: '船堀シネパル',
 latitude: 35.6844,
@@ -342,3 +388,194 @@ name: 'Cinema Rosa',
 latitude: 35.7325279,
 longitude: 139.7093304,
 address: '〒171-0021 東京都豊島区西池袋1-37-12' } ];
+
+//change to API call, instead of static data
+const currentlyShowingMovies = [
+  "Frozen",
+  "Terminator: Dark Fate",
+  "Angel Has Fallen",
+  "Weathering with You",
+  "Maleficent: Mistress of Evil",
+  "Listen to the Universe",
+  "One Night",
+  "Her Blue Sky",
+  "He Won't Kill, She Won't Die",
+  "Way To Find The Best Life",
+  "Joker",
+  "Hit Me Anyone One More Time",
+  "Star☆Twinkle Precure: Hoshi no Uta ni Omoi wo Komete",
+  "Matinee",
+  "The First Supper",
+  "Immortal Hero",
+  "Hell Girl",
+  "Saekano: How to Raise a Boring Girlfriend Movie",
+  "Re:Zero kara Hajimeru Isekai Seikatsu: Hyouketsu no Kizuna",
+  "The Journalist",
+  "Zombieland: Double Tap",
+  "Reon",
+  "Brightburn",
+  "It Chapter Two",
+  "Yesterday",
+  "Gemini Man",
+  "At Eternity's Gate",
+  "Ossan's Love: Love or Dead",
+  "Re-Elected",
+  "Kusama : Infinity",
+  "Promare",
+  "Bel Canto",
+  "Hotel Mumbai",
+  "Greta",
+  "Once Upon a Time... in Hollywood",
+  "Thelma & Louise: The Last Journey",
+  "Bang Dream! Film Live",
+  "The Promised Land",
+  "Bring Me Home",
+  "Hello World",
+  "Kaguya-sama: Love Is War",
+  "Little Miss Period",
+  "The Truth",
+  "Closed Ward",
+  "T-Guardians",
+  "Born Bone Born",
+  "A Long Goodbye",
+  "No Smoking",
+  "El Angel",
+  "Melancholic",
+  "Little Nights, Little Love",
+  "From Miyamoto To You",
+  "Happy Death Day",
+  "Mad Max: Fury Road",
+  "Become the King",
+  "Dilili in Paris",
+  "My Father, the Bride",
+  "The Kid with a Bike",
+  "The Greatest Showman",
+  "Bohemian Rhapsody",
+  "3 Faces",
+  "Height of the Wave",
+  "Verdict",
+  "Wet Season"
+ ];
+
+ //change to the following API call, instead of static data
+ //  axios.get("https://api.internationalshowtimes.com/v4/movies?apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6")
+//  .then(response => currentlyShowingMovies.forEach(title => {
+//    const currentMovie = response.data.movies.filter(movie => movie.title === title);
+//    const id = currentMovie[0].id;
+//    currentlyShowingMoviesAndIds.push({ id, title })
+//  }))
+//  .then(() => console.log(currentlyShowingMoviesAndIds));
+
+ const currentlyShowingMoviesAndIds = [ { id: '3808', title: 'Frozen' },
+ { id: '20966', title: 'Terminator: Dark Fate' },
+ { id: '52975', title: 'Angel Has Fallen' },
+ { id: '53434', title: 'Weathering with You' },
+ { id: '56369', title: 'Maleficent: Mistress of Evil' },
+ { id: '56869', title: 'Listen to the Universe' },
+ { id: '57992', title: 'One Night' },
+ { id: '61226', title: 'Her Blue Sky' },
+ { id: '61360', title: 'He Won\'t Kill, She Won\'t Die' },
+ { id: '61854', title: 'Way To Find The Best Life' },
+ { id: '62772', title: 'Joker' },
+ { id: '63994', title: 'Hit Me Anyone One More Time' },
+ { id: '64391',
+   title: 'Star☆Twinkle Precure: Hoshi no Uta ni Omoi wo Komete' },
+ { id: '64529', title: 'Matinee' },
+ { id: '64530', title: 'The First Supper' },
+ { id: '65198', title: 'Immortal Hero' },
+ { id: '51802', title: 'Hell Girl' },
+ { id: '62527',
+   title: 'Saekano: How to Raise a Boring Girlfriend Movie' },
+ { id: '64991',
+   title: 'Re:Zero kara Hajimeru Isekai Seikatsu: Hyouketsu no Kizuna' },
+ { id: '60468', title: 'The Journalist' },
+ { id: '21059', title: 'Zombieland: Double Tap' },
+ { id: '44121', title: 'Reon' },
+ { id: '47156', title: 'Brightburn' },
+ { id: '49593', title: 'It Chapter Two' },
+ { id: '50069', title: 'Yesterday' },
+ { id: '62003', title: 'Gemini Man' },
+ { id: '46016', title: 'At Eternity\'s Gate' },
+ { id: '61500', title: 'Ossan\'s Love: Love or Dead' },
+ { id: '60809', title: 'Re-Elected' },
+ { id: '39621', title: 'Kusama : Infinity' },
+ { id: '54177', title: 'Promare' },
+ { id: '48694', title: 'Bel Canto' },
+ { id: '34912', title: 'Hotel Mumbai' },
+ { id: '40278', title: 'Greta' },
+ { id: '58406', title: 'Once Upon a Time... in Hollywood' },
+ { id: '3258', title: 'Thelma & Louise: The Last Journey' },
+ { id: '60804', title: 'Bang Dream! Film Live' },
+ { id: '61832', title: 'The Promised Land' },
+ { id: '42749', title: 'Bring Me Home' },
+ { id: '59412', title: 'Hello World' },
+ { id: '61570', title: 'Kaguya-sama: Love Is War' },
+ { id: '63784', title: 'Little Miss Period' },
+ { id: '57802', title: 'The Truth' },
+ { id: '55917', title: 'Closed Ward' },
+ { id: '61270', title: 'T-Guardians' },
+ { id: '46905', title: 'Born Bone Born' },
+ { id: '55071', title: 'A Long Goodbye' },
+ { id: '8862', title: 'No Smoking' },
+ { id: '42694', title: 'El Angel' },
+ { id: '62103', title: 'Melancholic' },
+ { id: '60657', title: 'Little Nights, Little Love' },
+ { id: '63421', title: 'From Miyamoto To You' },
+ { id: '31628', title: 'Happy Death Day' },
+ { id: '12084', title: 'Mad Max: Fury Road' },
+ { id: '62050', title: 'Become the King' },
+ { id: '36648', title: 'Dilili in Paris' },
+ { id: '57772', title: 'My Father, the Bride' },
+ { id: '18118', title: 'The Kid with a Bike' },
+ { id: '12252', title: 'The Greatest Showman' },
+ { id: '40013', title: 'Bohemian Rhapsody' },
+ { id: '44573', title: '3 Faces' },
+ { id: '58797', title: 'Height of the Wave' },
+ { id: '61754', title: 'Verdict' },
+ { id: '62819', title: 'Wet Season' } ];
+
+const getMovieIdByTitle = (title) => {
+  const searchedMovie = currentlyShowingMoviesAndIds.find(movie => movie.title.toLowerCase() === title.toLowerCase());
+  return searchedMovie.id;
+}
+
+
+const getShowtimeDataByTitle = (title) => {
+  const movieId = getMovieIdByTitle(title);
+  let showtimeInfo = [];
+  axios.get(`https://api.internationalshowtimes.com/v4/showtimes?movie_id=${movieId}&location=35.6762,139.6503&distance=30&apikey=GAkMyJIurI77ruqXZ6ex0EehzqxLk1N6`)
+  .then(response => response.data.showtimes.filter(showtime => tokyoCinemaIds.includes(showtime.cinema_id)))
+  .then(showtimesArr => showtimesArr.forEach(showtimeObj => {
+    const currentCinema = cinemaInfos.find(cinema => cinema.id === showtimeObj.cinema_id);
+    console.log({ currentCinema });
+    //if there is no cinema info for this cinema yet
+    if (!showtimeInfo.find(showtime => showtime[0] === currentCinema.name)) {
+      showtimeInfo.push([
+        currentCinema.name,
+        {
+          movie: title,
+          name: currentCinema.name,
+          latitude: currentCinema.latitude,
+          longitude: currentCinema.longitude,
+          address: currentCinema.address,
+          showtimes: [showtimeObj.start_at]
+        }
+      ]);
+    } else {
+      console.log("I am in the else");
+      //if there is already this cinema obj, just add the showtime
+      let showtimeToAddTime = showtimeInfo.find(showtime => showtime[0] === currentCinema.name);
+      const index = showtimeInfo.indexOf(showtimeToAddTime);
+      showtimeToAddTime[1].showtimes.push(showtimeObj.start_at);
+      showtimeInfo[index] = showtimeToAddTime;
+    }
+  }))
+  .then(() => console.log(showtimeInfo));
+}
+
+[[]]
+
+
+getShowtimeDataByTitle('Joker');
+
+
