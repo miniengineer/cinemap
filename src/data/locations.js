@@ -1,3 +1,23 @@
+// const data = [
+//   {
+//     time: 1574262000,
+//     summary: "Clear throughout the day.",
+//     icon: "clear-day"
+//   }
+// ];
+
+// const weather = data.map(day => {
+//   return {
+//     time: new Date(day.time).toLocaleDateString("en-US", {
+//       month: "short",
+//       day: "numeric"
+//     }),
+//     icon: day.icon
+//   };
+// });
+
+// console.log(weather);
+
 const data = {
   cinemas: [
     {

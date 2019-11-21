@@ -83,7 +83,7 @@ input {
 #about h3,
 #home h3 {
   transition: 0.05s linear;
-  color: rgb(170, 157, 207) !important;
+  color: rgb(221, 211, 250) !important;
 }
 
 #about h3:hover,
