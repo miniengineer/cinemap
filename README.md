@@ -1,8 +1,12 @@
-# Cinemap
+# Cinemap 🎥 🗺
 
-Cinemap is a responsive single-page application for finding where and when movies are showing in Tokyo cinemas.
+<img src="./public/cinemap-logo.png">
 
-Try it on [Heroku](https://ccx-rakuten-rapid-api-cinemap.herokuapp.com/)!
+## Cinemap is a responsive single-page application for finding where and when movies are showing in Tokyo.
+
+<img src="./public/screen.png">
+
+### Try it on [Heroku](https://ccx-rakuten-rapid-api-cinemap.herokuapp.com/)!
 
 ---
 
