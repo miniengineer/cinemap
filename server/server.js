@@ -1,9 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
 const getShowtimesByMovie = require("./getShowtimesByMovie");
 //const axios = require("axios");
-//require("dotenv").config();
 
 const apikey = process.env.API_KEY;
 const imdbApikey = process.env.IMDB_API_KEY;
