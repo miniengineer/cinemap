@@ -11,6 +11,11 @@ const styles = theme => ({
   },
   appBar: {
     backgroundColor: "rgb(72, 40, 159)"
+  },
+  loadingGif: {
+    marginTop: theme.spacing(4),
+    height: "450px",
+    width: "600px"
   }
 });
 

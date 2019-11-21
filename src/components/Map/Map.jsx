@@ -81,7 +81,6 @@ class Map extends Component {
   };
 
   async componentDidMount() {
-    console.log(
       this.props.locations.map(l => {
         return {
           position: {
@@ -90,8 +89,7 @@ class Map extends Component {
           },
           key: l.id
         };
-      })
-    );
+      });
   }
 
   render() {
