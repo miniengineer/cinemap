@@ -2,6 +2,8 @@
 
 Cinemap is a responsive single-page application for finding where and when movies are showing in Tokyo cinemas.
 
+Try it on [Heroku](https://ccx-rakuten-rapid-api-cinemap.herokuapp.com/)!
+
 ---
 
 ## Table of Contents
@@ -62,8 +64,10 @@ APIs:
 
 ## Features Coming Soon
 
+- Location detection
 - Accurate-to-the-hour forecast data
 - Directions to cinemas
+- Nearby restaurants
 
 ---
 
