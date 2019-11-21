@@ -31,7 +31,7 @@ class App extends React.Component {
       cinemas: null,
       movieInfo: null,
       locations: null,
-      isLoading: true,
+      isLoading: false,
       isCinemaListShown: false
     };
   }
@@ -76,21 +76,6 @@ class App extends React.Component {
         acc.push(obj);
         return acc;
       }, []);
-
-      // const locations = showtimes.data.showtimeData.reduce((acc, showtimeArr) => {
-      //   let obj = {};
-      //   obj.name = showtimeArr[0];
-      //   obj.movie = this.state.selectedMovie;
-      //   obj.id = showtimeArr[1].latitude;
-      //   obj.location = {
-      //     lat: showtimeArr[1].latitude,
-      //     lon: showtimeArr[1].longitude,
-      //     address: showtimeArr[1].address
-      //   };
-      //   obj.showtimes = showtimeArr[1].showtimes;
-      //   acc.push(obj);
-      //   return acc;
-      // }, []);;
 
       this.setState({ cinemas, movieInfo, locations, isCinemaListShown: true, isLoading: false }, () =>
         console.log(this.state.cinemas)
