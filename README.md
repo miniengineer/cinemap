@@ -2,7 +2,7 @@
 
 <img src="./public/cinemap-logo.png">
 
-## Cinemap is a responsive single-page application for finding where and when movies are showing in Tokyo.
+### Cinemap is a responsive single-page application for finding where and when movies are showing in Tokyo.
 
 <img src="./public/screen.png">
 
