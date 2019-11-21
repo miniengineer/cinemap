@@ -100,6 +100,8 @@ class App extends React.Component {
     }
   };
 
+  componentDidMount() {}
+
   render() {
     const { classes } = this.props;
 
