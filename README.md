@@ -63,6 +63,7 @@ APIs:
 ## Features Coming Soon
 
 - Accurate-to-the-hour forecast data
+- Directions to cinemas
 
 ---
 
