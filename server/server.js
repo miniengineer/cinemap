@@ -13,6 +13,33 @@ const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log(`App listening on port ${PORT}!`));
 
+app.get("/api/weather", async (req, res) => {
+  const weatherOfTokyoResponse = await axios.get(
+    `https://dark-sky.p.rapidapi.com/35.6804,139.7690?lang=en&units=auto`,
+    {
+      headers: {
+        "x-rapidapi-host": "dark-sky.p.rapidapi.com",
+        "x-rapidapi-key": `${imdbApikey}`
+      }
+    }
+  );
+  const weatherOfTokyoData = weatherOfTokyoResponse.data;
+  console.log(weatherOfTokyoData);
+
+  const dailyWeatherOfTokyoData = weatherOfTokyoData.daily.data;
+
+  const weather = dailyWeatherOfTokyoData.map(day => {
+  return {
+    time: new Date(day.time).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric"
+    }),
+    icon: day.icon
+    };
+  })
+  res.send(weather);
+});
+
 app.get("/api/currently-showing", async (req, res) => {
   const tokyoWardIds =
     "21985,21990,21995,22003,22043,22045,22047,22062,22067,22038,22005,22157,22159,22224,22039,22262,22227,22103,22232,22180";
