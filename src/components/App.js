@@ -61,7 +61,8 @@ class App extends React.Component {
         movie: this.state.selectedMovie,
         imageUrl: showtimes.data.imdbDataCollection.image_url,
         imdbRating: showtimes.data.imdbDataCollection.rating,
-        summary: showtimes.data.imdbDataCollection.summary
+        summary: showtimes.data.imdbDataCollection.summary,
+        duration: showtimes.data.imdbDataCollection.duration
       };
 
       const locations = cinemas.reduce((acc, cinema) => {
