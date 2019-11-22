@@ -123,11 +123,14 @@ class App extends React.Component {
             variant="filled"
             label="What are we watching? 🎥"
             placeholder='Type a movie name, e.g. "Jurassic Park" 🦖 '
-            onKeyUp={this.handleMovieInput}
+            onKeyUp={e => {
+              this.handleMovieInput(e);
+            }}
           />
           <Fab
             onClick={() => {
               this.handleMovieInput("search");
+              this.setState({ selectedMovie: "" });
             }}
             color="primary"
             aria-label="search"
