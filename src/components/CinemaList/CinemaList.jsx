@@ -50,8 +50,8 @@ function CinemaList(props) {
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
-              src="https://dazedimg-dazedgroup.netdna-ssl.com/900/azure/dazed-prod/1270/8/1278472.jpg"
+              height="300"
+              src={props.movieInfo.imageUrl}
               title={props.movieInfo.movie.toUpperCase()}
             />
             <CardContent>
