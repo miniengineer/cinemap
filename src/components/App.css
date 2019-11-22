@@ -160,3 +160,9 @@ header h3 {
 .logo-container img {
   width: 10%;
 }
+
+/* icon sizes weather */
+
+.svg-inline--fa {
+  font-size: 170%;
+}
