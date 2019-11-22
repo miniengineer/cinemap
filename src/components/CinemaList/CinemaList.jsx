@@ -81,6 +81,16 @@ function CinemaList(props) {
                   {" "}
                 </Chip>
               </Typography>
+              <br />
+              <Typography
+                className={classes.alignLeft}
+                variant="h6"
+                component="h4"
+              >
+                <Chip size="medium" label={`${props.movieInfo.duration} min`}>
+                  {" "}
+                </Chip>
+              </Typography>
             </CardContent>
           </CardActionArea>
         </Card>
