@@ -12,7 +12,7 @@
 
 ## Table of Contents
 
-1. [How to Use](#how-to-use) <!-- Title pending -->
+1. [How to Use](#how-to-use)
 2. [For Developers](#setup-getting-started)
 3. [Technology Used](#technology-used)
 4. [Features Coming Soon](#features-coming-soon)
@@ -22,7 +22,19 @@
 
 ## How to Use
 
-_*Will insert screenshots and such once we're good to go*_
+Type in the name of the movie you'd like to see and click the search button.
+
+A map will appear with markers indicating where that movie is showing. You can hover over each marker to see all showtimes for that cinema.
+
+<img src="./public/map-w-popup.png">
+
+Below the map is the Movie Info section, which contains a brief synposis of the movie, as well as its runtime and IMDb rating.
+
+<img src="./public/movie-info.png">
+
+You can also scroll down to see showtime information for each cinema, and a weather forecast for each date.
+
+<img src="./public/showtimes-and-forecast.png">
 
 ---
 
@@ -42,7 +54,7 @@ Start the app:
 yarn start
 ```
 
-Then go to **localhost:3000** to view the app.
+Then go to **localhost:4000** to view the app.
 
 ---
 

@@ -11,7 +11,7 @@ const MyMap = withGoogleMap(props => (
   <GoogleMap
     className="googleMap"
     ref={props.onMapLoad}
-    defaultZoom={12}
+    defaultZoom={10}
     defaultCenter={{ lat: 35.6762, lng: 139.6503 }}
     setCenter={props.center}
     onClick={() => {}}
@@ -81,15 +81,15 @@ class Map extends Component {
   };
 
   async componentDidMount() {
-      this.props.locations.map(l => {
-        return {
-          position: {
-            lat: l.location.lat,
-            lng: l.location.lon
-          },
-          key: l.id
-        };
-      });
+    this.props.locations.map(l => {
+      return {
+        position: {
+          lat: l.location.lat,
+          lng: l.location.lon
+        },
+        key: l.id
+      };
+    });
   }
 
   render() {

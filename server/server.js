@@ -1,4 +1,4 @@
-//require("dotenv").config();
+// require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -38,8 +38,6 @@ app.get("/api/weather", async (req, res) => {
   });
   res.send(weather);
 });
-
-
 
 app.get("/api/cinemas/:title", async (req, res) => {
   const { title } = req.params;
