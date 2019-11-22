@@ -14,8 +14,7 @@ const styles = theme => ({
   },
   loadingGif: {
     marginTop: theme.spacing(4),
-    height: "450px",
-    width: "600px"
+    filter: "hue-rotate(29deg)"
   }
 });
 
