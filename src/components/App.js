@@ -21,11 +21,13 @@ class App extends React.Component {
     this.state = {
       selectedMovie: "",
       weather: [
-        { time: "Nov 19", icon: "rain" },
-        { time: "Nov 24", icon: "clear-day" },
+        { time: "Nov 22", icon: "rain" },
+        { time: "Nov 23", icon: "rain" },
+        { time: "Nov 24", icon: "rain" },
         { time: "Nov 25", icon: "overcast" },
-        { time: "Nov 27", icon: "clear-day" },
-        { time: "Nov 29", icon: "clear-day" }
+        { time: "Nov 26", icon: "clear-day" },
+        { time: "Nov 27", icon: "overcast" },
+        { time: "Nov 28", icon: "overcast" }
       ],
 
       cinemas: null,
@@ -77,8 +79,15 @@ class App extends React.Component {
         return acc;
       }, []);
 
-      this.setState({ cinemas, movieInfo, locations, isCinemaListShown: true, isLoading: false }, () =>
-        console.log(this.state.cinemas)
+      this.setState(
+        {
+          cinemas,
+          movieInfo,
+          locations,
+          isCinemaListShown: true,
+          isLoading: false
+        },
+        () => console.log(this.state.cinemas)
       );
     }
   };
@@ -127,18 +136,23 @@ class App extends React.Component {
             <SearchIcon />
           </Fab>
         </div>
-        {
-          this.state.isLoading ? <img src={ loadingCat } className={classes.loadingGif} alt="loading cat" /> : null
-        }
+        {this.state.isLoading ? (
+          <img
+            src={loadingCat}
+            width="300px"
+            className={classes.loadingGif}
+            alt="loading cat"
+          />
+        ) : null}
 
         {this.state.isCinemaListShown ? (
           <div>
-          <Map locations={this.state.locations}></Map>
-          <CinemaList
-            weather={this.state.weather}
-            cinemas={this.state.cinemas} // FROM INTERNATIONAL API CALL
-            movieInfo={this.state.movieInfo} // FROM IMDB CALL
-          />
+            <Map locations={this.state.locations}></Map>
+            <CinemaList
+              weather={this.state.weather}
+              cinemas={this.state.cinemas} // FROM INTERNATIONAL API CALL
+              movieInfo={this.state.movieInfo} // FROM IMDB CALL
+            />
           </div>
         ) : null}
       </Container>
