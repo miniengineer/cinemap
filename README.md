@@ -6,7 +6,7 @@
 
 <img src="./public/screen.png">
 
-### Try it on [Heroku](https://ccx-rakuten-rapid-api-cinemap.herokuapp.com/)!
+### Try it on [Heroku](https://cc-cinemap.herokuapp.com/)!
 
 ---
 
