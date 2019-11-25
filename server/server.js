@@ -1,10 +1,11 @@
-// require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const app = express();
 const axios = require("axios");
 const { getShowtimeDataByTitle } = require("./utils/utils");
 
+//TODO create .env file and store APIs there!!
+// require("dotenv").config();
 //const imdbApikey = process.env.IMDB_API_KEY;
 
 app.use(express.static(path.join(__dirname, "..", "build")));
